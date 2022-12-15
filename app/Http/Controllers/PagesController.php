@@ -5,12 +5,84 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PagesController;
 use App\Models\Estudiante;
+use App\Models\Curso;
 
 class PagesController extends Controller
 {
-    public function  fnIndex () {
+    
+    public function fnIndex () {
         return view('welcome');
     }
+
+    //////////////////////////CURSO////////////////
+    public function fnRegistrarCurso (Request $request){
+        //return $request;
+
+        $request -> validate([
+            'denCur'=>'required',
+            'hrsCur'=>'required',
+            'creCur'=>'required',
+            'plaCur'=>'required',
+            'tipCur'=>'required',
+            'estCur'=>'required',
+
+        ]);
+        $nuevoCurso = new Curso;
+        $nuevoCurso->denCur =$request->denCur;
+        $nuevoCurso->hrsCur =$request->hrsCur;
+        $nuevoCurso->creCur =$request->creCur;
+        $nuevoCurso->plaCur =$request->plaCur;
+        $nuevoCurso->tipCur =$request->tipCur;
+        $nuevoCurso->estCur =$request->estCur;
+
+        $nuevoCurso->save();
+        return back() -> with('msj','Se registro CURSO con éxito...');
+    }
+
+    public function fnEstActualizarCurso($id){
+        $xActCurso = Curso::findOrFail($id);
+        return view('Curso.pagActualizarCurso', compact('xActCurso'));
+    }
+
+    public function fnUpdateCurso(Request $request, $id){
+
+        $xUpdateCurso = Curso::findOrFail($id);
+
+        $xUpdateCurso -> denCur = $request -> denCur;
+        $xUpdateCurso -> hrsCur = $request -> hrsCur;
+        $xUpdateCurso -> creCur = $request -> creCur;
+        $xUpdateCurso -> plaCur = $request -> plaCur;
+        $xUpdateCurso -> tipCur = $request -> tipCur;
+        $xUpdateCurso -> estCur = $request -> estCur;
+    
+        $xUpdateCurso -> save();
+
+        return back()->with('msj','Se actualizo con exito...');
+    }
+
+
+
+    public function  fnEstDetalleCurso($id) { 
+        $xDetCurso = Curso::findOrFail($id);
+        return view('Curso.pagDetalleCurso', compact('xDetCurso'));
+    }
+
+    public function  fnListaCurso() {
+        $xCurso = Curso::paginate(3);
+        return view('pagListaCurso', compact('xCurso'));
+    }
+
+    public function fnEliminarCurso($id){
+        $deleteCurso = Curso::findOrFail($id);
+        $deleteCurso->delete();
+        return back() -> with('msj','Se elimino CURSO con éxito...');
+    }
+
+    
+
+
+
+    //////////////////////////ESTUDIANTE////////////////
 
     public function fnRegistrar (Request $request){
         //return $request;

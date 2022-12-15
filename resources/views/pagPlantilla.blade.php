@@ -11,13 +11,14 @@
         <a href="{{ route('xIndex') }}" class="btn btn-primary">Inicio</a>
         <a href="{{ route('xGaleria') }}" class="btn btn-primary">Galeria</a>
         <a href="{{ route('xLista') }}" class="btn btn-primary">Lista</a>
+        <a href="{{ route('xListaCurso') }}" class="btn btn-success">Curso</a>
     </div>
 
-    <div class="container my-5">
+    <div class="container my-5 text-center">
         @yield('titulo')
     </div>
 
-    <div class="container my-5">
+    <div class="container w-75 text-center">
         @yield('cuerpo')
     </div>
 

@@ -15,11 +15,28 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-
-
 Route::get('/', [PagesController::class,'fnIndex']) -> name('xIndex');
 
-Route::post('/', [PagesController::class,'fnRegistrar']) -> name('Estudiante.xRegistrar');
+////////////////////////////////////CURSO/////////////////////////////
+Route::post('/c', [PagesController::class,'fnRegistrarCurso']) -> name('Curso.xRegistrarCurso');
+
+
+Route::get('/listaCurso',[PagesController::class,'fnListaCurso']) -> name('xListaCurso');
+
+Route::get('/detalleCurso/{id}', [PagesController::class,'fnEstDetalleCurso']) -> name('Curso.xDetalleCurso');
+
+
+Route::get('/actualizarCurso/{id}', [PagesController::class,'fnEstActualizarCurso']) -> name('Curso.xActualizarCurso');
+Route::put('/actualizarCurso/{id}', [PagesController::class,'fnUpdateCurso']) -> name('Curso.xUpdateCurso');
+
+Route::delete('/eliminarCurso/{id}', [PagesController::class,'fnEliminarCurso']) -> name('Curso.xEliminarCurso');
+
+
+
+
+///////////////////////////////ESTUDIANTE///////////////////////
+
+Route::post('/e', [PagesController::class,'fnRegistrar']) -> name('Estudiante.xRegistrar');
 
 Route::get('/lista',[PagesController::class,'fnLista']) -> name('xLista');
 Route::get('/detalle/{id}', [PagesController::class,'fnEstDetalle']) -> name('Estudiante.xDetalle');
