@@ -43,8 +43,11 @@
             <option value="Transversal">Transversal</option>
             <option value="Especialidad">Especialidad</option>
         </select>
-        <input type="text" name="estCur" placeholder="Estado de curso" value="{{ old('estCur') }}" class="form-control mb-2">
-
+        <select name="estCur" class="form-control mb-2">
+            <option value="">Seleccione...</option>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+        </select>
 
         <button class="btn btn-primary" type="submit">Agregar</button>
 
