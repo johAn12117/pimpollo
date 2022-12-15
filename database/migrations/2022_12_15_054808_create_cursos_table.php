@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('creCur'); //8
             $table->integer('plaCur'); // 2010 2022  1990
             $table->string('tipCur'); //transversal Especialidad
-            $table->string('estCur'); //01,0
+            $table->integer('estCur'); //01,0
             $table->timestamps();
         });
     }
